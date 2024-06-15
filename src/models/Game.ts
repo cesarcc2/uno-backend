@@ -11,5 +11,6 @@ export interface Game {
     discardPile: Card[],
     maxNumberOfPlayers: number,
     isPrivate: boolean,
-    readyToStart: boolean
+    readyToStart: boolean,
+    hostId: string
 }

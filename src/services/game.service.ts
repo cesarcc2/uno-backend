@@ -28,7 +28,8 @@ export class GameService {
                 discardPile: [],
                 maxNumberOfPlayers: 4,
                 isPrivate: isPrivate,
-                readyToStart: false
+                readyToStart: false,
+                hostId: playerId
             };
             this.games.push(game);
             resolve(game);
