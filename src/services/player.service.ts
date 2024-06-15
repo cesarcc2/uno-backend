@@ -26,15 +26,6 @@ export class PlayerService {
         return this.players.find((p) => p.id === id);
     }
 
-    setReadyToPlay(id: string): Player | undefined {
-        const player = this.getPlayer(id);
-        if(!player) {
-            return;
-        }
-        player.isReadyToPlay = true;
-        return player;
-    }
-
     updatePlayer(player: Player): Promise<Player> {
         return new Promise((resolve,reject) => {
             const index = this.players.findIndex((p) => p.id === player.id);

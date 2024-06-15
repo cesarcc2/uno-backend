@@ -88,6 +88,10 @@ export class GameService {
             if(!player) {
                 reject("Player not found");
             }
+
+            if(player?.isReadyToPlay) {
+                player.isReadyToPlay = false;
+            }
             game!.players = game!.players.filter((p) => p.id !== player!.id);
             console.log(game);
             resolve(game!);
