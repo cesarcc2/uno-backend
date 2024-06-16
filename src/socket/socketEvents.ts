@@ -29,6 +29,12 @@ export function SocketEvents(socket: Socket) {
     socket.emit(SocketEventTypes.SendJoinedGameData, updatedGame);
     logger.info('Socket - A player toggled ready button ');
   });
+
+  socket.on(SocketEventTypes.StartGame, (gameId: string) => {
+    let updatedGame = gameServiceInstance.startGame(gameId);
+    socket.broadcast.to(gameId).emit(SocketEventTypes.SendJoinedGameData, updatedGame);
+    socket.emit(SocketEventTypes.SendJoinedGameData, updatedGame);
+  });
 }
 
 const getUpdatedGame = (gameId: string): Game => {

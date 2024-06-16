@@ -3,5 +3,7 @@ export enum SocketEventTypes {
     PlayerConnected = "PlayerConnected",
     PlayerDisconnected = "PlayerDisconnected",
     PlayerLeft = "PlayerLeft",
-    PlayerReadyToggle = "PlayerReadyToggle"
+    PlayerReadyToggle = "PlayerReadyToggle",
+
+    StartGame = "StartGame"
 }

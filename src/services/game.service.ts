@@ -157,6 +157,25 @@ export class GameService {
             return player.isReadyToPlay;
         })
     }
+
+    startGame(gameId: string): Game {
+        let game = this.getGameById(gameId)!;
+        if(game.readyToStart) {
+            game.status = GameStatus.InProgress;
+            game.drawPile = createDrawPile();
+            game.discardPile = [];
+            this.dealCardsToPlayers(game);
+        }
+        return game;
+    }
+
+    dealCardsToPlayers(game: Game) {
+        game.players.forEach((player) => {
+            for(let i = 0; i < 7; i++) {
+                player.cards.push(game.drawPile.pop()!);
+            }
+        })
+    }
 }
 
 const getUniqueShareCode = (games: Array<any>): string => {
