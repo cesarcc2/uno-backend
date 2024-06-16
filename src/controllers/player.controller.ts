@@ -18,10 +18,19 @@ export const playerController  = {
         const name: string = req.body.name;
         playerServiceInstance.createPlayer(name).then((player) => {
             // logger.info({message: successMessages.createPlayer, data: player});
-            return ResponseHandler(res, 200, "Player created", {player: player});
+            return ResponseHandler(res, 200, successMessages.createPlayer, {player: player});
         }).catch((error) => {
             logger.error({message: errorMessages.createPlayer, data: error});
-            return ErrorHandler(res, 500, error, "Error creating player");
+            return ErrorHandler(res, 500, error, errorMessages.createPlayer);
+        });
+    },
+    recreate: (req: Request, res: Response) => {
+        const player: Player = req.body.player;
+        playerServiceInstance.recreatePlayer(player).then((player) => {
+            return ResponseHandler(res, 200, successMessages.recreatePlayer, {player: player});
+        }).catch((error) => {
+            logger.error({message: errorMessages.recreatePlayer, data: error});
+            return ErrorHandler(res, 500, error, errorMessages.recreatePlayer);
         });
     },
     update: (req: Request, res: Response) => {
@@ -39,10 +48,12 @@ export const playerController  = {
 
 enum successMessages {
     createPlayer = "Player created",
+    recreatePlayer = "Player recreated",
     updatePlayer = "Player updated",
 }
 
 enum errorMessages {
     createPlayer = "Error creating player",
+    recreatePlayer = "Error recreating player",
     updatePlayer = "Error updating player",
 }

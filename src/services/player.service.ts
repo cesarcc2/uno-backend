@@ -22,6 +22,22 @@ export class PlayerService {
         });
     }
 
+    recreatePlayer(player: Player): Promise<Player> {
+        return new Promise((resolve,reject) => {
+            if(this.players.find((p) => p.id === player.id)) {
+                player.id = generateId(this.players);
+            }
+            player.isReadyToPlay = false;
+            player.calledUno = false;
+            player.cards = [];
+
+            console.log("Recreated Player ", player);
+
+            this.players.push(player);
+            resolve(player);
+        });
+    }
+
     getPlayer(id: string): Player | undefined {
         return this.players.find((p) => p.id === id);
     }
