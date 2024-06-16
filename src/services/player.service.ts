@@ -1,5 +1,6 @@
 import { Player } from "../models/Player";
 import { generateId } from "../utils/idGenerator";
+import { uniqueNamesGenerator, adjectives, colors, animals, names } from 'unique-names-generator';
 
 export class PlayerService {
     private players: Player[] = [];
@@ -57,10 +58,9 @@ export class PlayerService {
     }
 }
 const generateRandomUsername = (): string => {
-    const a = ["Small", "Blue", "Ugly"];
-    const b = ["Bear", "Dog", "Banana"];
-
-    const rA = Math.floor(Math.random()*a.length);
-    const rB = Math.floor(Math.random()*b.length);
-    return a[rA] + b[rB];
+    let randomName = uniqueNamesGenerator({
+        dictionaries: [adjectives, animals, colors, names],
+        length: 2
+    });
+    return randomName;
 }
