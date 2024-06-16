@@ -26,7 +26,7 @@ export function SocketEvents(socket: Socket) {
   socket.on(SocketEventTypes.PlayerReadyToggle, (data: {playerId: string, gameId: string}) => {
     let updatedGame = togglePlayerReady(data.playerId, data.gameId);
     socket.broadcast.to(data.gameId).emit(SocketEventTypes.SendJoinedGameData, updatedGame);
-    socket.to(data.gameId).emit(SocketEventTypes.SendJoinedGameData, updatedGame);
+    socket.emit(SocketEventTypes.SendJoinedGameData, updatedGame);
     logger.info('Socket - A player toggled ready button ');
   });
 }
