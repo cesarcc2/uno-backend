@@ -72,7 +72,7 @@ export class GameService {
         });
     }
 
-    leaveGame(playerId: string, game: Game | string | undefined): Promise<Game> {
+    leaveGame(playerId: string, game: Game | string | undefined): Promise<{game: Game | undefined, gamesList: Game[]}> {
         return new Promise((resolve,reject) => {
             if(typeof game === 'string') {
                 if(game.length == 6) {
@@ -93,8 +93,11 @@ export class GameService {
                 player.isReadyToPlay = false;
             }
             game!.players = game!.players.filter((p) => p.id !== player!.id);
-            console.log(game);
-            resolve(game!);
+            if(game?.players.length == 0) {
+                this.deleteGame(game.id);
+                game = undefined;
+            }
+            resolve({game: game, gamesList: this.games});
         });
     }
 

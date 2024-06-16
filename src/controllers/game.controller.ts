@@ -34,9 +34,9 @@ export const gameController  = {
     },
     leave: (req: Request, res: Response) => {
         const {playerId, gameId} = req.body;
-        gameServiceInstance.leaveGame(playerId, gameId).then((game: Game) => {
-            logger.info({message: successMessages.LeaveGame, data: {playerId: playerId, game: game.id}});
-            return ResponseHandler(res, 200, successMessages.LeaveGame, {game: game});
+        gameServiceInstance.leaveGame(playerId, gameId).then((data: { game: Game | undefined, gamesList: Game[] }) => {
+            logger.info({message: successMessages.LeaveGame, data: {playerId: playerId, game: data.game, gamesList: data.gamesList}});
+            return ResponseHandler(res, 200, successMessages.LeaveGame, {game: data.game, gamesList: data.gamesList});
         }).catch((error) => {
             logger.error({message: errorMessages.LeaveGame, data: error});
             return ErrorHandler(res, 500, error, errorMessages.LeaveGame);
