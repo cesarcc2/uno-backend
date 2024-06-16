@@ -92,10 +92,13 @@ export class GameService {
             if(player?.isReadyToPlay) {
                 player.isReadyToPlay = false;
             }
+
             game!.players = game!.players.filter((p) => p.id !== player!.id);
             if(game?.players.length == 0) {
                 this.deleteGame(game.id);
                 game = undefined;
+            } else {
+                game!.hostId =  game!.players[0].id;
             }
             resolve({game: game, gamesList: this.games});
         });
