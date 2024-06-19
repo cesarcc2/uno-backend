@@ -13,8 +13,10 @@ export class PlayerService {
                 id: generateId(this.players),
                 name: name ? name : generateRandomUsername(),
                 cards: [],
+                isReadyToPlay: false,
                 calledUno: false,
-                isReadyToPlay: false
+                canCallUno: false,
+                canCallAntiUno: false
             }
 
             console.log("Created Player ", player);

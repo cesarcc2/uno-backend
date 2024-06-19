@@ -5,5 +5,17 @@ export enum SocketEventTypes {
     PlayerLeft = "PlayerLeft",
     PlayerReadyToggle = "PlayerReadyToggle",
 
-    StartGame = "StartGame"
+    StartGame = "StartGame",
+
+    CardHovered = "CardHovered",
+    CardNotHovered = "CardNotHovered",
+    CardClicked = "CardClicked",
+
+    DeckHovered = "DeckHovered",
+    DeckNotHovered = "DeckNotHovered",
+    DeckClicked = "DeckClicked",
+
+    GameTurnUpdated = "GameTurnUpdated",
+    Uno = "Uno",
+    AntiUno = "AntiUno",
 }

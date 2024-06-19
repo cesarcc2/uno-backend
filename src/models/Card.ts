@@ -5,4 +5,5 @@ export interface Card {
     id: string,
     value: CardValue,
     color: CardColor,
+    hovered: boolean
 }

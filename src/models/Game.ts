@@ -4,6 +4,7 @@ import { Player } from "./Player";
 
 export interface Game {
     id: string,
+    hostId: string
     shareCode: string,
     status: GameStatus,
     players: Player[],
@@ -12,5 +13,9 @@ export interface Game {
     maxNumberOfPlayers: number,
     isPrivate: boolean,
     readyToStart: boolean,
-    hostId: string
+    turnOrder: string[],
+    currentTurnNumber: number,
+    currentTurnPlayerId: string,
+    winnerId: string | undefined,
+    playerPickingColor: string | undefined
 }

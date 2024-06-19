@@ -4,6 +4,8 @@ export interface Player {
     id: string;
     name: string;
     cards: Card[];
-    calledUno: boolean;
     isReadyToPlay: boolean;
+    canCallUno: boolean;
+    canCallAntiUno: boolean;
+    calledUno: boolean;
 }
