@@ -6,7 +6,7 @@ import { gameRoutes } from './routes/game.route';
 import { playerRoutes } from './routes/player.route';
 import { SocketEvents } from './socket/socketEvents';
 export const logger = pino();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000
 const app = express();
 const server = require('http').createServer(app);
 export const io = new Server(server,{cors: {
