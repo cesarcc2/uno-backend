@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon src/index.ts",
-    "start-pretty": "nodemon src/index.ts | pino-pretty"
+    "start-pretty": "nodemon src/index.ts | pino-pretty",
+    "build-prod": "tsc",
+    "start-prod": "node ./dist/index.js"
   },
   "keywords": [],
   "author": "",
